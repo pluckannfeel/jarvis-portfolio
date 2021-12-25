@@ -10,6 +10,7 @@ psycopg2-binary = "*"
 whitenoise = "*"
 gunicorn = "*"
 django-ckeditor = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

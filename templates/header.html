@@ -1,0 +1,56 @@
+<header class="header" id="header">
+    <nav class="nav container">
+        <a href="" class="nav_logo">Jarvis </a>
+        <div class="nav_menu" id="nav-menu">
+            <ul class="nav_list grid">
+                <li class="nav_item">
+                    <a href="#home" class="nav_link">
+                        <i id="active_starter" class="uil uil-home nav_icon active-link"></i> Home
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="#about" class="nav_link">
+                        <i class="uil uil-user-circle nav_icon"></i> About
+                    </a>
+                    
+                </li>
+                <li class="nav_item">
+                    <a href="#skills" class="nav_link">
+                        <i class="uil uil-wrench nav_icon"></i> Skills
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="#portfolio" class="nav_link">
+                        <i class="uil uil-books nav_icon"></i> Portfolio
+                    </a>
+                </li>
+                <!-- <li  class="nav_item">
+                    <a href="#services" class="nav_link">
+                        <i class="uil uil-bag nav_icon"></i> Services
+                    </a>
+                </li> -->
+                <li  class="nav_item">
+                    <a href="{% url 'blog:post-list' %}" class="nav_link">
+                        <i class="uil uil-document-layout-left nav_icon"></i> Blog
+                    </a>
+                </li>
+                <li  class="nav_item">
+                    <a href="#contact" class="nav_link">
+                        <i class="uil uil-at nav_icon"></i> Contact
+                    </a>
+                </li>
+            </ul>
+
+            <i class="uil uil-times nav_close " id="nav-close"></i>
+        </div>
+
+        <div class="nav_btns">
+            <!-- change theme -->
+            <i class="uil uil-moon change_theme" id="theme-button"></i>
+
+            <div class="nav_toggle" id="nav-toggle">
+                <i class="uil uil-apps"></i>
+            </div>
+        </div>
+    </nav>
+</header>

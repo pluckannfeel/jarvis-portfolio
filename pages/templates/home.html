@@ -1,0 +1,440 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+    <main class="main">
+        <!-- Home section -->
+        <section class="home section" id="home">
+            <div class="home_container container grid">
+                <div class="home_content grid">
+                    <div class="home_social">
+                        <a href="https://www.linkedin.com/in/jarviscript/" target="_blank" class="home_social_icon">
+                            <i class="uil uil-linkedin"></i>
+                        </a>
+
+                        <a href="https://github.com/" target="_blank" class="home_social_icon">
+                            <i class="uil uil-github"></i>
+                        </a>
+
+                        <a href="https://www.instagram.com/millan.jarvis/?hl=en" target="_blank" class="home_social_icon">
+                            <i class="uil uil-instagram"></i>
+                        </a>       
+                    </div>
+
+                    <div class="home_img">
+                        <img src="{% static 'img/me.png' %}" alt="">
+                    </div>
+
+                    <div class="home_data">
+                        <h1 class="home_title"> Hi, I am Jarvis.</h1>
+                        <h3 class="home_subtitle">Web Developer</h3>
+                        <p class="home_description">Solution-driven Web and App Developer adept at
+                            contributing to highly collaborative work
+                            environment, finding solutions and determining
+                            customer satisfaction.</p>
+
+                        <a href="#contact" class="button button--flex home_button_contact">
+                            Contact Me <i class="uil uil-message button_icon"></i> 
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="home_scroll">
+                    <a href="#about" class="home_scroll_button button--flex">
+                        <i class="uil uil-mouse-alt-2 home_scroll_mouse"></i>
+                        <span class="home_scroll_name">Scroll down</span>
+                        <i class="uil uil-angle-double-down home_scroll_down"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about section" id="about">
+            <h2 class="section_title">About Me</h2>
+                <span class="section_subtitle">
+                    Summary
+                </span>
+
+                <div class="about_container container grid">
+                    <img src="{% static 'img/pogi.png' %}" alt="" class="about_img">
+
+                    <div class="about_data">
+                        <p class="about_description">Web and Mobile App Developer. Dedicated IT professional with history of meeting company goals utilizing consistent and organized practices. Skilled in working under pressure and adapting to new situations and challenges to best enhance the organizational brand.</p>
+
+                        <div class="about_info">
+                            <div>
+                                <span class="about_info_title">4</span>
+                                <span class="about_info_name">Years <br> experience</span>
+                            </div>
+
+                            <div>
+                                <span class="about_info_title">20+</span>
+                                <span class="about_info_name">Completed <br> Client/Company Projects</span>
+                            </div>
+
+                            <div>
+                                <span class="about_info_title">3+</span>
+                                <span class="about_info_name">Companies <br> Worked</span>
+                            </div>
+                        </div>
+
+                        <div class="about_buttons">
+                            <a download="" href="{% static 'pdf/Jarvis-CV.pdf' %}" class="button button--flex">
+                                Download CV <i class="uil uil-save button_icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- skills -->
+            <section class="skills section" id="skills">
+                <h2 class="section_title">Skills</h2>
+                <span class="section_subtitle">
+                    My Expertise
+                </span>
+
+                <div class="skills_container container grid">
+
+                <!-- backend -->
+                <div class="skills_content skills_open">
+                    <div class="skills_header">
+                        <i class="uil uil-brackets-curly skills_icon"></i>
+                        <div class="skills_title">
+                            <h1 class="skills_title">Back-End Development</h1>
+                            <span class="skills_subtitle">for 2 years</span>
+                        </div>
+                        <i class="uil uil-angle-double-down skills_arrow"></i>
+                    </div>
+
+                    <div class="skills_language grid">
+                        <div class="skills_language_title">
+                            <span class="skills_language_text_title">
+                                Tools/Languages Used
+                            </span>
+                        </div>
+                        
+                        <div class="skills_language_items">
+                            <img src="{% static 'img/tools/php.png' %}" class="skills_language_items" alt="php">
+                            <img src="{% static 'img/tools/python.png' %}" class="skills_language_items" alt="python">
+                            <img src="{% static 'img/tools/sql.png' %}" class="skills_language_items" alt="sql">
+                            <img src="{% static 'img/tools/c-sharp.png' %}" class="skills_language_items" alt="c-sharp">
+                            <img src="{% static 'img/tools/java.png' %}" class="skills_language_items" alt="java">
+                        </div>
+
+                        
+                    </div>    
+                    
+                    <div class="skills_list grid">
+                        <div class="skills_data">
+                            <div class="skills_data_title">
+                                <h3 class="skills_name">PHP</h3>
+                                <span class="skills_data_number">70%</span>
+                            </div>
+                            <div class="skills_bar">
+                                <span class="skills_percentage skills_php">
+
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="skills_data">
+                            <div class="skills_data_title">
+                                <h3 class="skills_name">Python</h3>
+                                <span class="skills_data_number">80%</span>
+                            </div>
+                            <div class="skills_bar">
+                                <span class="skills_percentage skills_python">
+
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="skills_data">
+                            <div class="skills_data_title">
+                                <h3 class="skills_name">SQL</h3>
+                                <span class="skills_data_number">80%</span>
+                            </div>
+                            <div class="skills_bar">
+                                <span class="skills_percentage skills_sql">
+
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="skills_data">
+                            <div class="skills_data_title">
+                                <h3 class="skills_name">C#</h3>
+                                <span class="skills_data_number">50%</span>
+                            </div>
+                            <div class="skills_bar">
+                                <span class="skills_percentage skills_csharp">
+
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="skills_data">
+                            <div class="skills_data_title">
+                                <h3 class="skills_name">Java</h3>
+                                <span class="skills_data_number">50%</span>
+                            </div>
+                            <div class="skills_bar">
+                                <span class="skills_percentage skills_java">
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- end backend -->
+
+                <!-- frontend -->
+                <div class="skills_content skills_close">
+                    <div class="skills_header">
+                        <i class="uil uil-arrow skills_icon"></i>
+                        <div class="skills_title">
+                            <h1 class="skills_title">Front-End Development</h1>
+                            <span class="skills_subtitle">for about 3+ years</span>
+                        </div>
+                        <i class="uil uil-angle-double-down skills_arrow"></i>
+                    </div>
+
+                    <div class="skills_language grid">
+                        <div class="skills_language_title">
+                            <span class="skills_language_text_title">
+                                Tools/Languages Used
+                            </span>
+                        </div>
+                        
+                        <div class="skills_language_items">
+                            <img src="{% static 'img/tools/html.png' %}" class="skills_language_items" alt="html.png">
+                            <img src="{% static 'img/tools/css.png' %}" class="skills_language_items" alt="css">
+                            <img src="{% static 'img/tools/js.png' %}" class="skills_language_items" alt="js">
+                        </div>
+
+                    </div>    
+
+                    <div class="skills_list grid">
+                        <div class="skills_data">
+                            <div class="skills_data_title">
+                                <h3 class="skills_name">HTML</h3>
+                                <span class="skills_data_number">90%</span>
+                            </div>
+                            <div class="skills_bar">
+                                <span class="skills_percentage skills_html">
+
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="skills_data">
+                            <div class="skills_data_title">
+                                <h3 class="skills_name">CSS</h3>
+                                <span class="skills_data_number">80%</span>
+                            </div>
+                            <div class="skills_bar">
+                                <span class="skills_percentage skills_css">
+
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="skills_data">
+                            <div class="skills_data_title">
+                                <h3 class="skills_name">JavaScript</h3>
+                                <span class="skills_data_number">70%</span>
+                            </div>
+                            <div class="skills_bar">
+                                <span class="skills_percentage skills_js">
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                        
+                </div>
+                <!-- end frontend -->
+
+                <!-- mobile app  -->
+                <div class="skills_content skills_close">
+                    <div class="skills_header">
+                        <i class="uil uil-mobile-android skills_icon"></i>
+                        <div class="skills_title">
+                            <h1 class="skills_title">Mobile App Development</h1>
+                            <span class="skills_subtitle">More than 2 years</span>
+                        </div>
+                        <i class="uil uil-angle-double-down skills_arrow"></i>
+                    </div>
+
+                    <div class="skills_language grid">
+                        <div class="skills_language_title">
+                            <span class="skills_language_text_title">
+                                Tools/Languages Used
+                            </span>
+                        </div>
+                        
+                        <div class="skills_language_items">
+                            <img src="{% static 'img/tools/android.png' %}" class="skills_language_items" alt="android.png">
+                            <img src="{% static 'img/tools/cordova.png' %}" class="skills_language_items" alt="cordova.png">
+                        </div>
+
+                    </div>    
+
+                    <div class="skills_list grid">
+                        <div class="skills_data">
+                            <div class="skills_data_title">
+                                <h3 class="skills_name">Android Studio</h3>
+                                <span class="skills_data_number">70%</span>
+                            </div>
+                            <div class="skills_bar">
+                                <span class="skills_percentage skills_android">
+
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="skills_data">
+                            <div class="skills_data_title">
+                                <h3 class="skills_name">Apache Cordova</h3>
+                                <span class="skills_data_number">80%</span>
+                            </div>
+                            <div class="skills_bar">
+                                <span class="skills_percentage skills_cordova">
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                        
+                </div>
+                <!-- end mobile app  -->
+                            
+                </div>
+            </section>
+
+            <section class="portfolio section" id="portfolio">
+                <h2 class="section_title">Portfolio</h2>
+                <span class="section_subtitle">
+                    Some of my Work
+                </span>
+                <!-- swiper -->
+                <div class="portfolio_container container swiper swiper-container">
+                    <div class="swiper-wrapper">
+                        <!-- portfolio1 -->
+                        <div class="portfolio_content grid swiper-slide">
+                            <img src="{% static 'img/portfolio/crmmobile.png' %}" alt="crm" class="portfolio_img">
+
+                            <div class="portfolio_data">
+                                <h3 class="portfolio_title">Customer Relationship Management Mobile App</h3>
+                                <p class="portfolio_description">Built a mobile app extension for last company's CRM system and provided dedicated support and timely issue resolution to clients.</p>
+                                <a href="#" class="portfolio_button button button--flex button--sm">
+                                    View <i class="uil uil-eye button_icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- portfolio2 -->
+                        <div class="portfolio_content grid swiper-slide">
+                            <img src="{% static 'img/portfolio/website.jpg' %}" alt="crm" class="portfolio_img"/>
+
+                            <div class="portfolio_data">
+                                <h3 class="portfolio_title">Modern Websites, E-commerce Sites</h3>
+                                <p class="portfolio_description">Created several mobile-responsive websites including integration of open source management system such as Wordpress, and application of payments system such as ClickBank and Paypal.</p>
+                                <a href="#" class="portfolio_button button button--flex button--sm">
+                                    View <i class="uil uil-eye button_icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- portfolio3 -->
+                        <div class="portfolio_content grid swiper-slide">
+                            <img src="{% static 'img/portfolio/homeseek.png' %}" alt="crm" class="portfolio_img"/>
+
+                            <div class="portfolio_data">
+                                <h3 class="portfolio_title">Home Lease and Rental Search Engine System</h3>
+                                <p class="portfolio_description">Researched and Developed a search engine intended for people looking for rental spaces, apartments and dormitories. With services such as SMS and location mapping. Users have access on android. </p>
+                                <a href="#" class="portfolio_button button button--flex button--sm">
+                                    View <i class="uil uil-eye button_icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next">
+                        <i class="uil uil-angle-right swiper-portfolio-icon"></i>
+                    </div>
+                    <div class="swiper-button-prev">
+                        <i class="uil uil-angle-left swiper-portfolio-icon"></i>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <!-- end swiper -->
+                
+            </section>
+
+            <!-- Contact -->
+            <section class="contact section" id="contact">
+                <h2 class="section_title">Contact</h2>
+                <span class="section_subtitle">Send a message</span>
+
+                <div class="contact_container container grid">
+                    <div class="grid contact_box">
+                        <div class="contact_information">
+                            <i class="uil uil-at contact_icon"></i>
+
+                            <h3 class="contact_title">Email Address</h3>
+                            <span class="contact_subtitle">pluckannfeel@icloud.com</span>
+                        </div>
+
+                        <div class="contact_information">
+                            <i class="uil uil-phone-volume contact_icon"></i>
+
+                            <h3 class="contact_title">Phone Number</h3>
+                            <span class="contact_subtitle">(+81) 080 9538 9452</span>
+                        </div>
+                    </div>
+
+                    <form method="post" class="contact_form grid" id="contact-submit">
+                        <input type="hidden" value="{% url 'pages:contact-submit' %}" id="contact-form-url">
+                        {{ form.non_field_errors }}
+                        <div class="contact_inputs grid">
+                            <div class="contact_content">
+                                {{ form.name.errors }}
+                                <label for="{{ form.name.id_for_label }}" class="contact_label">Name</label>
+                                <!-- <input type="text" class="contact_input"> -->
+                                {{ form.name }}
+                            </div>
+                            <div class="contact_content">
+                                {{ form.subject.errors }}
+                                <label for="{{ form.subject.id_for_label }}" class="contact_label">Subject</label>
+                                <!-- <input type="text" class="contact_input"> -->
+                                {{ form.subject }}
+                            </div>
+                        </div>
+                        <div class="contact_content">
+                            {{ form.email.errors }}
+                                <label for="{{ form.email.id_for_label }}" class="contact_label">Email Address</label>
+                                <!-- <input type="text" class="contact_input"> -->
+                                {{ form.email }}
+                        </div>
+                        <div class="contact_content">
+                            {{ form.message.errors }}
+                            <label for="{{ form.message.id_for_label }}" class="contact_label">Message</label>
+                            <!-- <textarea name="" id="" cols="0" rows="7" class="contact_input"></textarea> -->
+                            {{ form.message }}
+                        </div>
+
+                        <div>
+                            <button name="submit" type="submit" class="button button--flex contact_submit">
+                                Send message <i class="uil uil-message contact_submit_icon"></i> </button>
+                        </div>
+                    </form>
+
+                </div>
+            </section>
+            <!-- End Contact -->
+
+    </main>
+{% endblock content %}

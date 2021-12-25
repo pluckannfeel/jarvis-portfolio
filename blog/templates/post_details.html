@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ post.title }} {% endblock title %}
+
+{% block content %}
+<section class="blog section">
+    <div class="container">
+        <h2 class="section_title post_detail_title"> {{ post.title }}</h2>
+        {% if user.is_authenticated %}
+        <form method="post" class="" id="post-like-submit">
+            <input type="hidden" value="{% url 'blog:post-user-like' %}" id="post-like-url">
+            <input type="hidden" value="{{ post.id }}" id="post-id">
+            <span class="section_subtitle post_like">by {{ post.author }} <br> <button type="submit" class="button button_nm button--flex contact_submit" ><i class="uil uil-thumbs-up "></i> Like</button> {{ post.total_likes }} Like{{ post.total_likes|pluralize }}</span>
+        </form>
+        {% else %}
+        <span class="section_subtitle post_like">by {{ post.author }}</span>
+        {% endif %}
+    </div>
+    <div class="container blog_container grid">
+        <div class="post_data">
+            <div class="post_items">
+                <div class="post_item post_detail_item grid">
+                    <!-- image here -->
+                    <div class="post_item_img">
+                        <!-- <a class="post_list_links" href="{{ post.get_absolute_url }}"> -->
+                            {% if post.header_image %}
+                            <img class="" src="{{ post.header_image.url }}" alt="{{ post.header_image }}" />
+                            {% else %}
+                            <img class="" src="{% static 'img/defaults/noimage.png' %}" alt="noimage" >
+                            {% endif %}
+                        <!-- </a> -->
+                    </div>
+                    <div class="post_item_content">
+                        <p>{{ post.body|safe }}</p>
+                        <p><b>posted on: {{ post.date|date:"SHORT_DATE_FORMAT" }}</b></p>
+                    </div>
+                </div>
+            </div>
+            {% if user.is_authenticated %}
+                <div class="post_actions">
+                    <a href="{% url 'blog:post-edit' post.pk %}" class="button button_nm button_outline button--flex contact_submit">Edit</a>
+                    <a href="{% url 'blog:post-delete' post.pk %}" class="button button_nm button--flex contact_submit">Delete</a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="post_sidebar"> 
+            <div class="sidebar_categories">
+                <div class="categories_header">
+                    <h3 class="">Categories</h3>
+                </div>
+
+                <div class="categories_links grid">
+                    <ul>
+                        {% for category in categories %}
+                        <li>
+                            <a class="categories_link" href="{% url 'blog:post-category' category.name %}">
+                                <div class="categories_item">
+                                    <h4>{{ category.name }}</h4>
+                                    <span class="count_posts_badge">{{ category.posts_count }}</span>
+                                </div>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

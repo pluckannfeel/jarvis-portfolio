@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Delete Post {% endblock title %}
+
+{% block content %}
+<section class="blog section">
+    <h2 class="section_title post_detail_title"> {{ post.title }}</h2>
+    <!-- <span class="section_subtitle"></span> -->
+    
+    <div class="container blog_container grid">
+        <form method="post">
+            {% csrf_token %}
+            <h3>Are you sure you want to delete <u>{{ post.title }}</u>?</h3>
+            <br>
+            <div class="">
+                <input class="button button--flex contact_submit" type="submit" value="Confirm">
+            </div> 
+        </form>
+    </div>
+</section>
+{% endblock content %}

@@ -11,6 +11,7 @@ whitenoise = "*"
 gunicorn = "*"
 django-ckeditor = "*"
 django-cors-headers = "*"
+postgres = "*"
 
 [dev-packages]
 

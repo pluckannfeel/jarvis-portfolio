@@ -12,6 +12,7 @@ gunicorn = "*"
 django-ckeditor = "*"
 django-cors-headers = "*"
 postgres = "*"
+django-environ = "*"
 
 [dev-packages]
 

@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 django = "*"
-environs = {version = "==8.0.0", extras = ["django"]}
+environs = {extras = ["django"], version = "*"}
 psycopg2-binary = "*"
 whitenoise = "*"
 gunicorn = "*"
@@ -13,6 +13,7 @@ django-ckeditor = "*"
 django-cors-headers = "*"
 postgres = "*"
 django-environ = "*"
+dj-database-url = "*"
 
 [dev-packages]
 

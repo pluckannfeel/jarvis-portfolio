@@ -155,36 +155,39 @@ const csrftoken = getCookie('csrftoken');
 
 const contactForm = document.getElementById('contact-submit');
 if(contactForm){
-    contactForm.addEventListener("submit", (e) => {
-        // prevent page reload
-        e.preventDefault();
-        // get values from form
-        const contactUrl = document.getElementById('contact-form-url').value;
-        const FormData = {
-            name: contactForm.elements["contact_form_name"].value,
-            subject: contactForm.elements["contact_form_subject"].value,
-            email: contactForm.elements["contact_form_email"].value,
-            message: contactForm.elements["contact_form_message"].value,
-        }
-    
-        if(!contactForm.classList.contains('form-timeout')) {
-            submitContact(contactUrl, FormData)
-            // adding timeout on contact submit
-            formTimeout(contactForm)
-            setTimeout(() => {
-                contactForm.classList.remove('form-timeout')
-            }, 60*1000);
-        }else{
-            swal({
-                title: "Take a break",
-                text: "Please take a minute to send another message.",
-                icon: "error",
-                button: "Close",
-              });
-        }
-        
-        contactForm.reset()
-    })
+    contactForm.addEventListener("click", handleContactForm)
+    // contactForm.addEventListener("touch", handleContactForm)
+}
+
+function handleContactForm(e){
+     // prevent page reload
+     e.preventDefault();
+     // get values from form
+     const contactUrl = document.getElementById('contact-form-url').value;
+     const FormData = {
+         name: contactForm.elements["contact_form_name"].value,
+         subject: contactForm.elements["contact_form_subject"].value,
+         email: contactForm.elements["contact_form_email"].value,
+         message: contactForm.elements["contact_form_message"].value,
+     }
+ 
+     if(!contactForm.classList.contains('form-timeout')) {
+         submitContact(contactUrl, FormData)
+         // adding timeout on contact submit
+         formTimeout(contactForm)
+         setTimeout(() => {
+             contactForm.classList.remove('form-timeout')
+         }, 60*1000);
+     }else{
+         swal({
+             title: "Take a break",
+             text: "Please take a minute to send another message.",
+             icon: "error",
+             button: "Close",
+           });
+     }
+     
+     contactForm.reset()
 }
 
 

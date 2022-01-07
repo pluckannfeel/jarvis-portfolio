@@ -155,7 +155,7 @@ const csrftoken = getCookie('csrftoken');
 
 const contactForm = document.getElementById('contact-submit');
 if(contactForm){
-    contactForm.addEventListener("click", handleContactForm)
+    contactForm.addEventListener("submit", handleContactForm)
     // contactForm.addEventListener("touch", handleContactForm)
 }
 
@@ -226,7 +226,7 @@ if(postLike){
         const FormData = {
             post_id: postLike.elements["post-id"].value,
         }
-        console.log(FormData)
+        // console.log(FormData)
         postAddLike(postLikeUrl, FormData)
         postLike.reset()
     })
@@ -246,8 +246,96 @@ function postAddLike(url, payload){
     })
     .then(response => response.json())
     .then(data => {
-        console.log('Liked:', data);
+        console.log(data)
+
+        const likeButton = document.getElementById('post-like-btn'); 
+        if(data['isLiked']){
+            likeButton.innerHTML = '<i class="uil uil-thumbs-down "></i>&nbsp; Unlike';
+        }else{
+            likeButton.innerHTML = '<i class="uil uil-thumbs-up "></i>&nbsp; Like';
+        }
+        
+        const totalLike = document.getElementById('total-likes');
+        totalLike.textContent = data['total_likes'] + ' Like' + pluralize(data['total_likes'])
     })
 }
 
+let userCommentCount = localStorage.getItem('userCommentCount'); // 0
+if(!userCommentCount){
+    userCommentCount = 0
+}
+const postComment = document.getElementById('form-add-comment');
+if(postComment){
+    postComment.addEventListener("submit", (e)=>{
+        e.preventDefault();
 
+        const postCommentUrl = document.getElementById('post-comment-url').value;
+        // get values from form
+        const FormData = {
+            post_id: postComment.elements["post-id"].value,
+            post_comment: postComment.elements["post-comment"].value,
+        }
+
+        // timeout if commented 5 times
+        // console.log(userCommentCount)
+        if(userCommentCount < 5){
+            postAddComment(postCommentUrl, FormData)
+        }
+        else{
+            swal({
+                title: "Slow Down.",
+                text: "Please take a minute to add another comment",
+                icon: "error",
+                button: "Close",
+              });
+            
+              setTimeout(() => {
+                userCommentCount = 0;
+                localStorage.setItem('userCommentCount', userCommentCount)
+            }, 60*1000);
+        }
+        postComment.reset()
+    })
+}
+
+const commentWrapper = document.getElementById('comments-wrapper');
+function postAddComment(url, payload){
+    // console.log(payload)
+    fetch(url, {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+        'Content-Type': 'application/json',
+        "X-Requested-With": "XMLHttpRequest",
+        "X-CSRFToken": getCookie("csrftoken"),
+        },
+        body: JSON.stringify({payload: payload}),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+
+        // parent first child
+        let firstItem = commentWrapper.firstChild
+        const commentItem = document.createElement("div");
+        commentItem.className = "comment_item";
+        commentItem.innerHTML = '<p class="comment_author">' + 
+            data['author'] + ' <span class="comment_timestamp">on' + data['date'] + 
+            '</span></p>' +
+            '<p class="comment_detail">' + data['body'] + '</p>';
+        commentWrapper.insertBefore(commentItem, firstItem);
+        userCommentCount++;
+        localStorage.setItem('userCommentCount', userCommentCount)
+
+        const totalComment = document.getElementById('total-comments');
+        totalComment.textContent = data['total_comments'] + ' Comment' + pluralize(data['total_comments'])
+    })
+}
+
+function pluralize(num){
+    console.log(num)
+    if(parseInt(num) > 1)
+        return 's'
+    
+    return ''
+}

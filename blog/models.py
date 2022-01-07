@@ -30,6 +30,10 @@ class Post(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(get_user_model(), related_name='blog_posts', null=True, blank=True)
     
+
+    def total_comments(self):
+        return self.comments.count()
+
     def total_likes(self):
         return self.likes.count()
     
@@ -42,6 +46,26 @@ class Post(models.Model):
     def delete(self):
         self.header_image.delete()
         super(Post, self).delete()
+
+class Comment(models.Model):
+    post = models.ForeignKey(
+        Post, 
+        on_delete=models.CASCADE,
+        related_name='comments',
+        )
+    comment = models.TextField()
+    author = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+    )
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.comment
+
+    def get_absolute_url(self):
+        return reverse('blog:post-detail', kwargs={"pk":  self.pk})
+    
 
 def _delete_file(path):
 #    """ Deletes file from filesystem. """

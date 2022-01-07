@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Category
+from .models import Post, Category, Comment
 from django.contrib.auth import get_user_model
 
 category_choices = Category.objects.all().values_list('name', 'name')
@@ -78,4 +78,19 @@ class PostUpdateForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'contact_input'}),
             'body': forms.Textarea(attrs={'class': 'contact_input', 'rows': '10'}),
+        }
+
+class PostAddCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = [
+            'comment', 
+        ]
+        
+        labels = {
+            "comment": "Write a Comment.."
+        }
+        
+        widgets = {
+            'comment': forms.Textarea(attrs={'class': 'contact_input', 'rows': '2'}),
         }

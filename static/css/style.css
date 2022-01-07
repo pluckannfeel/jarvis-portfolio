@@ -127,6 +127,7 @@ ul {
 
 a {
     text-decoration: none;
+    color: var(--first-color);
 }
 
 img { 
@@ -158,11 +159,17 @@ textarea {
     text-align: center;
 }
 
+
 /* layout */
 .container {
     max-width: 768px;
     margin-left: var(--mb-1-5);
     margin-right: var(--mb-1-5);
+}
+
+.container_title {
+    font-size: var(--h3-font-size);
+    font-weight: var(--font-semi-bold);
 }
 
 .grid {
@@ -731,11 +738,48 @@ textarea {
 }
 
 .post_like {
-    line-height: 2rem;
+    /* line-height: 2rem; */
+    /* display: inline-block; */
+    margin: var(--mb-1) 0;
+    justify-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+}
+
+.post_like button {
+    /* display: block; */
 }
 
 .btn-post-like {
     color: var(--first-color);
+}
+
+.post_comments_actions {
+    margin-top: var(--mb-1);
+}
+
+.comment_header {
+    margin: var(--mb-1) 0;
+}
+
+.comments_wrapper, .comment_item {
+    margin: var(--mb-1) 0;
+}
+
+.add_comments_data { 
+    padding: var(--mb-0-5);
+}
+
+.comment_author {
+    font-weight: var(--font-semi-bold);
+}
+
+.comment_timestamp {
+    font-weight: var(--font-md)
+}
+
+.add_comments_submit {
+    margin-top: var(--mb-0-5);
 }
 
 

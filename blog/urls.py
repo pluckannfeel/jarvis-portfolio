@@ -8,7 +8,8 @@ from .views import (
     PostUpdateView,
     PostDeleteView,
     PostCategoryView,
-    PostLikeView,
+    PostAddLike,
+    PostAddComment,
 )
 
 app_name = 'blog'
@@ -19,7 +20,10 @@ urlpatterns = [
     path('delete/<int:pk>', PostDeleteView.as_view(), name='post-delete'),
     path('create/', PostCreateView.as_view(), name='post-create'),
     path('category/<str:cats>/', PostCategoryView, name='post-category'),
-    path('userlike/', PostLikeView, name='post-user-like'),
+
+    # ajax urls
+    path('userlike/', PostAddLike, name='post-user-like'),
+    path('usercomment/', PostAddComment, name='post-user-comment'),
 ]
 
 # handler404 = 'blog.views.errorpage'

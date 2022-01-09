@@ -28,7 +28,7 @@ class Post(models.Model):
     # category = models.CharField(max_length=64, default="Uncategorized")
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
-    likes = models.ManyToManyField(get_user_model(), related_name='blog_posts', null=True, blank=True)
+    likes = models.ManyToManyField(get_user_model(), related_name='blog_posts')
     
 
     def total_comments(self):

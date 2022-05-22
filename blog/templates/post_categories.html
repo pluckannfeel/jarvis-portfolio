@@ -1,0 +1,88 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Blog {% endblock title %}
+
+{% block content %}
+    <section class="blog section">
+        <h2 class="section_title"> {{ category_name }}</h2>
+        <span class="section_subtitle">{{ post_count }} Post{{ post_count|pluralize }}</span>
+        
+        <div class="container blog_container grid">
+            <div class="post_data">
+                <div class="post_items grid">
+                    <!-- <p>{{ post_count }}</p> -->
+                    {% for post in category_posts %}
+                    <div class="post_item">
+                        <div class="post_item_img">
+                            <a class="post_list_links" href="{{ post.get_absolute_url }}">
+                                {% if post.header_image %}
+                                <img class="" src="{{ post.header_image.url }}" alt="{{ post.header_image }}" />
+                                {% else %}
+                                <img class="" src="{% static 'img/defaults/noimage.png' %}" alt="noimage" >
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="post_item_content">
+                            <h1><a class="post_list_links" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+                            <h4>{{ post.author }}</h4>
+                            <p class="post_item_content_body">{{ post.body|truncatewords:40|safe }}</p>
+                            <p class="post_item_content_date">posted on: {{ post.date|date:"SHORT_DATE_FORMAT" }}</p>
+                        </div>
+                    </div>
+                    {% endfor %} 
+                </div>
+            </div>
+            <div class="post_sidebar"> 
+                <div class="sidebar_recent_posts">
+                    <div class="recent_posts_header">
+                        <h3 class="">Recent Posts</h3>
+                    </div>
+                    
+                    {% for post in recent_posts %}
+                    <div class="recent_posts_item grid">
+                        <div class="rp_item_thumbnail">
+                            <a href="{{ post.get_absolute_url }}">
+                                {% if post.header_image %}
+                                <img class="" src="{{ post.header_image.url }}" alt="{{ post.header_image }}" />
+                                {% else %}
+                                <img class="" src="{% static 'img/defaults/noimage.png' %}" alt="noimage" >
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="rp_details">
+                            <a href="{{ post.get_absolute_url }}">
+                                <p class="rp_item_date">{{ post.date|date:"D, M d, Y"  }}</p>
+                                <p class="rp_item_title">{{ post.title|truncatewords:3|safe }}</p>
+                            <a href=""></a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                
+                </div>
+
+                <div class="sidebar_categories">
+                    <div class="categories_header">
+                        <h3 class="">Categories</h3>
+                    </div>
+
+                    <div class="categories_links grid">
+                        <ul>
+                            {% for category in categories %}
+                            <li>
+                                <a class="categories_link" href="{% url 'blog:post-category' category.name %}">
+                                    <div class="categories_item">
+                                        <h4>{{ category.name }}</h4>
+                                        <span class="count_posts_badge">{{ category.posts_count }}</span>
+                                    </div>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

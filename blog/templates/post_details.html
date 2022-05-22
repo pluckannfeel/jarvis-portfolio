@@ -1,0 +1,108 @@
+{% extends 'base.html' %} {% load static %}
+ {% block title %} {{ post.title }} {% endblock title %} 
+
+ {% block content %}
+<section class="blog section">
+    <div class="container">
+        <h2 class="section_title post_detail_title"> {{ post.title }}</h2>
+        <span class="section_subtitle ">by {{ post.author }} </span>
+        
+    </div>
+    <div class="container blog_container grid">
+        <div class="post_data">
+            <div class="post_items">
+                <div class="post_item post_detail_item grid">
+                    <!-- image here -->
+                    <div class="post_item_img">
+                        <!-- <a class="post_list_links" href="{{ post.get_absolute_url }}"> -->
+                        {% if post.header_image %}
+                        <img class="" src="{{ post.header_image.url }}" alt="{{ post.header_image }}" /> {% else %}
+                        <img class="" src="{% static 'img/defaults/noimage.png' %}" alt="noimage"> {% endif %}
+                        <!-- </a> -->
+                    </div>
+                    <div class="post_item_content">
+                        <p>{{ post.body|safe }}</p>
+                        <p><b>posted on: {{ post.date|date:"SHORT_DATE_FORMAT" }}</b></p>
+                    </div>
+                </div>
+            </div>
+            {% if user.is_authenticated %}
+            <div class="post_actions">
+                <a href="{% url 'blog:post-edit' post.pk %}" class="button button_nm button_outline button--flex contact_submit">Edit</a>
+                <a href="{% url 'blog:post-delete' post.pk %}" class="button button_nm button--flex contact_submit">Delete</a>
+            </div>
+            {% endif %}
+
+            
+
+                {% if user.is_authenticated %}
+        <form method="post" class="" id="post-like-submit">
+            <div class="post_like container">
+            <p class="container_title" id="total-likes">{{ post.total_likes }} Like{{ post.total_likes|pluralize }}</p>
+
+            <input type="hidden" value="{% url 'blog:post-user-like' %}" id="post-like-url">
+            <!-- {% csrf_token %} -->
+            <input type="hidden" value="{{ post.id }}" id="post-id">
+
+            {% if isLiked %}
+                <button id="post-like-btn" type="submit" class="button button_nm button--flex contact_submit" ><i class="uil uil-thumbs-up "></i>&nbsp; Like</button>
+            {% else %}
+                <button id="post-like-btn" type="submit" class="button button_nm button--flex contact_submit" ><i class="uil uil-thumbs-down "></i> &nbsp; UnLike</button> 
+            {% endif %}
+
+            </div>
+        </form>
+        {% endif %}
+
+            <div class="post_comments">
+                <div class="comment_header">
+                    <p class="container_title " id="total-comments">{{ total_comments }} Comment{{ total_comments|pluralize }}</p>
+                </div>
+                <hr>
+                <div id="comments-wrapper" class="comments_wrapper">
+                    {% for comment in post.comments.all reversed  %}
+                        <div class="comment_item">
+                            <p class="comment_author">{{ comment.author }} <span class="comment_timestamp">on {{ comment.timestamp }}</span></p>
+                            <p class="comment_detail">{{ comment }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            {% if user.is_authenticated %}
+                <div class="post_comments_actions container">
+                    <form id="form-add-comment" method="post">
+                        <input type="hidden" value="{% url 'blog:post-user-comment' %}" id="post-comment-url">
+                        <input type="hidden" value="{{ post.id }}" id="post-id">
+                        <textarea maxlength="150" required name="" id="post-comment" class="contact_input add_comments_data" placeholder="Write A Comment.. " cols="30" rows="3"></textarea>
+                        <button class="button button_nm button--flex add_comments_submit comment_submit" type="submit">Add Comment</button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="post_sidebar">
+            <div class="sidebar_categories">
+                <div class="categories_header">
+                    <h3 class="">Categories</h3>
+                </div>
+
+                <div class="categories_links grid">
+                    <ul>
+                        {% for category in categories %}
+                        <li>
+                            <a class="categories_link" href="{% url 'blog:post-category' category.name %}">
+                                <div class="categories_item">
+                                    <h4>{{ category.name }}</h4>
+                                    <span class="count_posts_badge">{{ category.posts_count }}</span>
+                                </div>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

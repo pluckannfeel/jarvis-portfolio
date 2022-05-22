@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Create Post {% endblock title %}
+
+{% block content %}
+
+<section class="blog section">
+    <h2 class="section_title post_detail_title"> Create Blog Post</h2>
+    <!-- <span class="section_subtitle"></span> -->
+    
+    <div class="container blog_container grid">
+        <form method="post" enctype="multipart/form-data">
+            <div class=" grid">
+                {% csrf_token %}
+                {{form.media}}
+                {% for field in form %}
+                    <div class="contact_content">
+                        <label class="contact_label">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <!-- {{ form.as_p }}-->
+                <div class="">
+                    <input class="button button--flex contact_submit" type="submit" value="Create Post">
+                </div> 
+            </div>
+        </form>
+    </div>
+</section>
+
+
+{% endblock content %}

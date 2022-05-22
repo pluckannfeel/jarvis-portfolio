@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} Account Sign Up {% endblock title %}
+
+{% block content %}
+<section class="accounts section">
+    <h2 class="section_title"> Account Sign Up </h2>
+        <span class="section_subtitle">Become a member</span>
+
+    <div class="container grid">
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="button button--flex button_nm contact_submit" value="Sign Up" name="" id="">
+        </form>
+    </div>
+</section>
+{% endblock content %}
